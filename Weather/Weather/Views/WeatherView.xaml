@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Weather.Views.WeatherView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Previsão do Tempo"
+    BackgroundColor="{Binding BackColor}">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="20"
+            Padding="20"
+            HorizontalOptions="Fill"
+            VerticalOptions="FillAndExpand">
+
+            <StackLayout
+                Orientation="Vertical"
+                Spacing="15">
+                <Entry 
+                    Placeholder="Digite a cidade" 
+                    Text="{Binding CityName}" 
+                    FontSize="18"
+                    HorizontalOptions="Fill" />
+                <Button 
+                    Command="{Binding getCityCommand}" 
+                    Text="Buscar" 
+                    FontAttributes="Bold"
+                    BackgroundColor="#007AFF"
+                    TextColor="White" />
+            </StackLayout>
+
+            <Frame
+                BackgroundColor="White"
+                BorderColor="White"
+                CornerRadius="20"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Padding="20"
+                WidthRequest="300">
+                <VerticalStackLayout Spacing="10">
+                    <Label
+                        Text="{Binding Name}"
+                        FontSize="24"
+                        FontAttributes="Bold"
+                        TextColor="Black"
+                        HorizontalTextAlignment="Center" />
+                    <Label
+                        Text="{Binding Description}"
+                        FontSize="18"
+                        TextColor="SlateGray"
+                        HorizontalTextAlignment="Center" />
+                    <Image
+                        Source="{Binding WeatherImage}"
+                        HeightRequest="150"
+                        WidthRequest="150"
+                        HorizontalOptions="Center" />
+                    <Label
+                        Text="{Binding Temperature}"
+                        FontSize="50"
+                        FontAttributes="Bold"
+                        TextColor="Black"
+                        HorizontalTextAlignment="Center" />
+                    <Label
+                        Text="{Binding FeelsLike}"
+                        FontSize="16"
+                        TextColor="SlateGray"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="Center" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Grid 
+                ColumnDefinitions="*, *, *" 
+                Padding="10"
+                HorizontalOptions="Fill"
+                VerticalOptions="EndAndExpand">
+                <Label 
+                    Text="{Binding Humidity}" 
+                    FontSize="14" 
+                    HorizontalTextAlignment="Center" 
+                    Grid.Column="0" />
+                <Image 
+                    Source="wind.png"
+                    HeightRequest="25"
+                    Grid.Column="1"
+                    HorizontalOptions="Center" />
+                <Label 
+                    Text="{Binding WindSpeed}" 
+                    FontSize="14" 
+                    HorizontalTextAlignment="Center" 
+                    Grid.Column="2" />
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
